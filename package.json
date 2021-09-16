@@ -1,5 +1,6 @@
 {
   "name": "snacker-website",
+  "homepage": "https://danieltran3110.github.io/snacker-react/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
