@@ -1,6 +1,5 @@
 {
   "name": "snacker-website",
-  "homepage": "https://danieltran3110.github.io/snacker-react/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -11,7 +10,6 @@
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
-    "gh-pages": "^3.2.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
@@ -19,8 +17,8 @@
     "web-vitals": "^1.0.1"
   },
   "scripts": {
-    "start": "node server.js",
-    "dev": "react-scripts start",
+    "start": "react-scripts start",
+    "dev": "node server.js",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
