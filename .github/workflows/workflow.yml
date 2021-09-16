@@ -9,18 +9,33 @@ jobs:
   build:
     runs-on: ubutu-latest
 
-    strategy:
-      matrix:
-        node-version: [15.x]
-
     steps:
-      - name: Checkout
-      - uses: actions/checkout@v1
+      - uses: actions/checkout@v2
 
-      - name: Install and build
-        run: npm install && npm run build
-      
-      - name: Deploy
+      - name: Setup Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+          
+      - name: Get yarn cache
+        id: yarn-cache
+        run: echo "::set-output name=dir::$(yarn cache dir)"
+
+      - name: Cache dependencies
+        uses: actions/cache@v2
+        with:
+          path: ${{ steps.yarn-cache.outputs.dir }}
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+          
+      - name: Install and Build
+        run: |
+          yarn install --frozen-lockfile
+          yarn build
+          cp build/index.html build/404.html
+          
+      - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.5
         with:
           branch: gh-pages # The branch the action should deploy to.
