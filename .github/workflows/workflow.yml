@@ -1,9 +1,13 @@
 name: Github Pages deploy
 
 on: 
-  push:
-    branches:
-      - main
+#   push:
+#     branches:
+#       - main
+    workflow_dispatch:
+    
+env:
+  CI: false
 
 jobs:
   build-and-deploy:
